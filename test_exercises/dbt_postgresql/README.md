@@ -1,7 +1,8 @@
 ## Запуск
 1. docker-compose up
-2. Перейти в терминале в директорию dbt_postgresql\dbt_proj
-3. Запустить dbt run -m tag:task --profiles-dir profiles
+2. Запутсить в postgresql запрос raw_data.sql с исходными данными
+3. Перейти в терминале в директорию dbt_postgresql\dbt_proj
+4. Запустить dbt run -m tag:task --profiles-dir profiles
 
 
 ## Описание структуры таблиц
