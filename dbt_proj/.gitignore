@@ -1,0 +1,10 @@
+target/
+dbt_packages/
+logs/
+manifest.json
+.vscode/
+profiles.yml
+*.log
+*.html
+*.json
+edr_target/
