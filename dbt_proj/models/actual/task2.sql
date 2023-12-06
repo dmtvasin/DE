@@ -1,14 +1,23 @@
+{{
+  config
+  (
+    tags = ["task"]
+  )    
+}}
+
 with cte_departments as (
-    Select
-    overlay(email PLACING '' FROM position('.' IN email) FOR 1) as email  
-    ,Case When department is null Then 'Отдел не определен'
-        Else department
-    End department
-    from {{ source('public','manager_departments') }} 
+  select
+    overlay(email placing '' from position('.' in email) for 1) as email
+    , case
+      when department is null then 'Отдел не определен'
+      else department
+    end as department
+  from {{ source('public','manager_departments') }}
 )
-Select
-cte_departments.department,
-sum(payments.value)
-From {{ source('public','payments') }} as payments
-Left join cte_departments as cte_departments on cte_departments.email = payments.manager_email
-Group by 1
+
+select
+  cte_departments.department
+  , sum(payments.value)
+from {{ source('public','payments') }} as payments
+left join cte_departments as cte_departments on cte_departments.email = payments.manager_email
+group by 1

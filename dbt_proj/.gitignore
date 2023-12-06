@@ -7,4 +7,3 @@ profiles.yml
 *.log
 *.html
 *.json
-edr_target/

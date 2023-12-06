@@ -34,8 +34,4 @@ models:
             materialized: table
             tags: model
 vars:
-    percent_alert_refuel_volume_test: 10
     dbt_date:time_zone: 'Europe/Moscow'
-    fact_lower_date: "'2017-12-31'"
-    snapshot_base_table_name: null
-    rn_var: null
