@@ -4,7 +4,7 @@ dbt_proj: # this needs to match the profile: in your dbt_project.yml file
   outputs:
     prod:
       type: postgres
-      host: localhost # первый
+      host: localhost
       user: postgresuser
       password: postgrespw
       port: 5432
