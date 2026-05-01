@@ -1,0 +1,12 @@
+target/compiled
+target/run
+*.msgpack
+*.gpickle
+dbt_packages/
+logs/
+.vscode/
+profiles.yml
+*.log
+*.html
+*.json
+edr_target/

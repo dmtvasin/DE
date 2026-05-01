@@ -1,0 +1,20 @@
+name: 'drivee_dbt_proj'
+version: '1.0.0'
+
+profile: 'drivee_dbt_proj'
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+seed-paths: ["seed"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  drivee_dbt_proj:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
