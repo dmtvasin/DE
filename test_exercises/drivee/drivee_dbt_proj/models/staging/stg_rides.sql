@@ -1,5 +1,3 @@
--- stg_rides.sql — адаптация под dataset_test.csv (только поля из присутствующих в данных)
-
 with source as (
     select *
     from {{ source('raw', 'rides') }}
@@ -56,14 +54,6 @@ derived as (
         date_diff('minute', pickup_datetime, dropoff_datetime) as trip_duration_min,
         cast(pickup_datetime as DATE) as pickup_date,
         extract(hour from pickup_datetime) as pickup_hour,
-        {# Case When ((extract(dow from pickup_datetime) + 6) % 7) + 1 = 1 Then 'Понедельник'
-            When ((extract(dow from pickup_datetime) + 6) % 7) + 1 = 2 Then 'Вторник'
-            When ((extract(dow from pickup_datetime) + 6) % 7) + 1 = 3 Then 'Среда'
-            When ((extract(dow from pickup_datetime) + 6) % 7) + 1 = 4 Then 'Четверг'
-            When ((extract(dow from pickup_datetime) + 6) % 7) + 1 = 5 Then 'Пятница'
-            When ((extract(dow from pickup_datetime) + 6) % 7) + 1 = 6 Then 'Суббота'
-            When ((extract(dow from pickup_datetime) + 6) % 7) + 1 = 7 Then 'Воскресенье'
-        End as pickup_dow, #}
         ((extract(dow from pickup_datetime) + 6) % 7) + 1 as pickup_dow,
         concat(
             try_cast(strftime(pickup_datetime, '%V') as varchar), 
